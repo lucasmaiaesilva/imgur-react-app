@@ -1,6 +1,7 @@
-var React		= require('react'),
-	ReactDOM	= require('react-dom'),
-	Message 	= require('./hello-world'); // call the component on file hello-world.jsx
+var React			= require('react');
+var	ReactDOM		= require('react-dom');
+var Routes 			= require('./routes');
 
 
-ReactDOM.render(<Message />, document.getElementById('content'));
+
+ReactDOM.render(Routes, document.getElementById('content'));
