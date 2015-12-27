@@ -1,7 +1,14 @@
-var Api = require('../utils/api');
-var Reflux = require('reflux');
+var Api 		= require('../utils/api');
+var Reflux 		= require('reflux');
+var Actions 	= require('../actions');
 
 module.exports = Reflux.createStore({
+
+	// By using this line any methods with the same name of methods on this 
+	// component we can simply call on the Actions module
+	// just a proxy for the methods
+	listenables: [Actions],
+
 	getTopics: function(){
 		return Api.get('topics/defaults')
 			.then(function(res){

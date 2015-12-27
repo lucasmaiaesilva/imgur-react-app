@@ -1,6 +1,9 @@
 var React 		= require('react');
 var Reflux 		= require('reflux');
 var TopicStore 	= require('../stores/topic-store');
+var Actions 	= require('../actions');
+var ReactRouter = require('react-router');
+var Link 		= ReactRouter.Link;
 
 module.exports = React.createClass({
 
@@ -17,12 +20,17 @@ module.exports = React.createClass({
 	},
 
 	componentWillMount: function(){
-		TopicStore.getTopics()
+		Actions.getTopics();
 	},
 
 	renderTopics: function(){
 		return this.state.topics.map(function(topic){
-			return <li> {topic.description} </li>
+			return (
+			<Link to={"/topics/" + topic.id} key={topic.id}> 
+					<h4>{topic.name}</h4>
+					<p>{topic.description}</p>
+				</Link>
+			);
 		});
 	},
 
@@ -33,7 +41,7 @@ module.exports = React.createClass({
 	render: function(){
 		return ( 
 			<div>
-				Topics List
+				<h2>Topics List</h2>
 				{this.renderTopics()}
 			</div>
 		);

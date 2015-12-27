@@ -15,12 +15,13 @@ var Route 			= ReactRouter.Route;
 
 // REQUIRE SCREENS
 var Main	= require('./components/main');
+var Topic 	= require('./components/topic');
 
 
 module.exports = (
 	<Router /*history={history}*/>
 		<Route path="/" component={Main}>
-
+			<Route path="topics/:id" component={Topic} />
 		</Route>
 	</Router>
 );
