@@ -20,6 +20,7 @@ var Main	= require('./components/main');
 module.exports = (
 	<Router /*history={history}*/>
 		<Route path="/" component={Main}>
+
 		</Route>
 	</Router>
 );

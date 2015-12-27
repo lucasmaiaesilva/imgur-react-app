@@ -11,10 +11,18 @@ module.exports = {
 			headers: {
 				'Authorization': 'Client-ID ' + apiKey
 			}
-		});
+		})
+		.then(function(res){
+			return res.json()
+		})
 	}
 };
 
 // when you need to get data from API, just do this on code
-// var Api = require('./utils/api');
-// Api.get('images');
+/*
+ var Api = require('./utils/api');
+ Api.get('images')
+ .then(function(data){
+	do something with data
+})
+*/
