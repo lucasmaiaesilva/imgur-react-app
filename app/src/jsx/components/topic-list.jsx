@@ -1,5 +1,5 @@
-var React = require('react');
-var Api = require('../utils/api');
+var React 		= require('react');
+var TopicStore 	= require('../stores/topic-store');
 
 module.exports = React.createClass({
 	
@@ -8,12 +8,16 @@ module.exports = React.createClass({
 	},
 
 	componentWillMount: function(){
-		Api.get('topics/defaults')
-		 .then(function(res){
-		 	this.setState({
-		 		topics: res.data
-		 	})
-		 }.bind(this));
+		TopicStore.getTopics()
+			.then(function(){
+				// we have successfully fetched topics
+				// topics are available on TopicStore.topics
+				// after a promisse we know that topics are ok to use
+				this.setState({
+					topics: TopicStore.topics
+				});
+
+			}.bind(this));
 	},
 
 	renderTopics: function(){
