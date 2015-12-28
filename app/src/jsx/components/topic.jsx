@@ -2,6 +2,7 @@ var React = require('react');
 var Actions = require('../actions');
 var ImageStore = require('../stores/image-store');
 var Reflux = require('reflux');
+var ImagePreview = require('./image-preview');
 
 
 module.exports = React.createClass({
@@ -28,7 +29,17 @@ module.exports = React.createClass({
 		this.setState({ images: imagesUpdated });
 	},
 
+	renderImages: function(){
+		return this.state.images.slice(0,20).map(function(image){
+			return <ImagePreview key={image.id} image={image} />
+		});
+	},
+
 	render: function(){
-		return <h1>Topic Number {this.props.params.id}</h1>
+		return (
+			<div>
+				{this.renderImages()}
+			</div>
+		);
 	}
 });
