@@ -20,6 +20,10 @@ module.exports = React.createClass({
 		Actions.getImages(this.props.params.id);
 	},
 
+	componentWillReceiveProps: function(nextProps){
+		Actions.getImages(nextProps.params.id);	
+	},
+
 	onChange: function(event, imagesUpdated){
 		this.setState({ images: imagesUpdated });
 	},
