@@ -1,4 +1,6 @@
 var React = require('react');
+var ReactRouter = require('react-router');
+var Link = ReactRouter.Link;
 
 module.exports = React.createClass({
 
@@ -31,12 +33,13 @@ module.exports = React.createClass({
 
 	render: function(){
 		return (
-			<div 
+			<Link 
+			to={ "images/" + this.props.image.id }
 			onMouseEnter={this.handleMouseEnter}
 			onMouseLeave={this.handleMouseLeave}
 			>
 				{this.props.image.animated && this.state.hovering ? this.video() : this.image()}
-			</div>
+			</Link>
 		);
 	}
 });
