@@ -1,2 +1,2 @@
 // main file js
-var sample = require('./sample')
+var sample = require('./sample');

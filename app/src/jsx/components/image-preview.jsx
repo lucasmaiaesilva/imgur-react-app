@@ -1,7 +1,6 @@
 var React = require('react');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
-var Waterfall = require('waterfall.js');
 
 module.exports = React.createClass({
 
@@ -17,10 +16,6 @@ module.exports = React.createClass({
 		this.setState({ hovering: false });
 	},
 
-	componentWillMount: function(){
-		var grid = document.querySelector('.grid');
-		Waterfall(grid);
-	},
 
 	image: function(){
 		var link = 'http://i.imgur.com/' + this.props.image.id + 'h.jpg';
