@@ -10,6 +10,11 @@ module.exports = Reflux.createStore({
 		this.trigger('change', this.comment);
 	},
 
+
+	// the function below have this name because its the same name of the
+	// other function called on the image-detail component on the cycle
+	// componentWillMount, this let us abble to call the both functions
+	// with one single write
 	getImage: function(id){
 		Api.get('gallery/' + id + '/comments')
 			.then(function(res){
