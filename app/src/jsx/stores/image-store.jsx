@@ -18,6 +18,24 @@ module.exports = Reflux.createStore({
 			}.bind(this));
 	},
 
+	find: function(id){
+		// first param property from object
+		// second param id passed to param from a function
+		var image = _.findWhere(this.images, {id: id});
+
+		// the if above, exist because if the user paste the link into the 
+		// navigation bar it will call the function getImage and this function
+		// will make the request and if not will just take the id and return the 
+		// object
+		if(image) {
+			return image
+		} else {
+			this.getImage(id);
+			return null;
+		}
+
+	},
+
 	getImage: function(id){
 		Api.get('gallery/image/' + id)
 			.then(function(res){
@@ -33,19 +51,6 @@ module.exports = Reflux.createStore({
 				
 	},
 
-	find: function(id){
-		var image = _.findWhere(this.images, {id: id});
-		// first param property from object
-		// second param id passed to param from a function
-
-		if(image) {
-			return image
-		} else {
-			this.getImage(id);
-			return null;
-		}
-
-	},
 
 	triggerChange: function(){
 		this.trigger('change', this.images);
